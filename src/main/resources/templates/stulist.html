@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+     <h3>学生列表</h3>
+    <table>
+        <tr>
+            <td>编号</td>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>生日</td>
+            <td>操作</td>
+        </tr>
+        <tr th:each="st : ${list}">
+            <td th:text="${st.id}">编号</td>
+            <td th:text="${st.name}">姓名</td>
+            <td th:text="${st.age}">年龄</td>
+            <td th:text="${#dates.format(st.birthday,'yyyy-MM-dd')}">生日</td>
+            <td>
+                <a th:href="|/stu/delete?id=${st.id}|">删除</a>|
+                <a th:href="|/stu/toUpdate?id=${st.id}|">修改</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
